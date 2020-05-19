@@ -3,10 +3,11 @@
   "version": "3.1.0",
   "main": "main.js",
   "dependencies": {
-    "discord.js": "^11.6.4",
-    "nodemon": "^1.19.4"
+    "discord.js": "^12.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0"
+  },
   "scripts": {
     "start": "node main.js",
     "dev": "nodemon main.js"

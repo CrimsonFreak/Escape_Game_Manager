@@ -1,17 +1,30 @@
-let fs = require('fs')
-let Discord = require('discord.js')
-let main = new Discord.Client
-let config = require('./config.json')
+let Discord = require('discord.js');
+let config = require('./config.json');
+let main = new Discord.Client;
 
-module.exports = main
+module.exports = main;
+
 try {
-    require('./events/ready.js')
-    require('./events/message.js')
-    require('./events/guildMemberAdd.js')
-    require('./events/guildMemberRemove.js')
+    main
+        .on(
+            'ready',
+            require('./events/ready.js')
+        )
+        .on(
+            'message',
+            require('./events/message.js')
+        )
+        .on(
+            'guildMemberAdd',
+            require('./events/guildMemberAdd.js')
+        )
+        .on(
+            'guildMemberRemove',
+            require('./events/guildMemberRemove.js')
+        )
+    ;
+    main.login(config.token);
 }
 catch(err) {
-    console.log(err)
+    console.log(err);
 }
-
-main.login(config.token)
